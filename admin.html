@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <!-- 設定字符編碼為 UTF-8，確保中文正確顯示 -->
+    <meta charset="UTF-8">
+    <!-- 設定視窗區域，適配手機螢幕，防止輸入時縮放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 頁面標題 -->
+    <title>後台管理 - 服務項目設定</title>
+    
+    <!-- 防止不必要的資源預載 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- 載入後台管理專用的 CSS 樣式表 -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- 主要容器 -->
+    <div class="container">
+        <!-- 表單容器 -->
+        <div class="form-container">
+            <!-- 頁面標題 -->
+            <h1 class="form-title">簡易後台管理系統</h1>
+            
+             <!-- 服務項目管理區塊 -->
+            <div class="section">
+                <!-- 區塊標題 -->
+                <h2 class="section-title">服務項目管理</h2>
+                
+                <!-- 拖拽提示文字 -->
+                <div class="drag-hint" id="dragHint">長按拖曳改變項目順序</div>
+                
+                <!-- 分隔線 -->
+                <div class="divider"></div>
+                
+                <!-- 服務項目容器（動態載入） -->
+                <div class="service-options" id="serviceOptions">
+                    <!-- 服務項目將從 Google Sheets 動態載入 -->
+                    <div style="text-align: center; padding: 40px; color: #8b7d8b;">
+                        <div style="font-size: 24px; margin-bottom: 10px;">⏳</div>
+                        <div>載入中...</div>
+                    </div>
+                </div>
+                
+                <!-- 新增服務項目按鈕 (編輯模式下顯示) -->
+                <div class="add-service-container hidden" id="addServiceContainer">
+                    <button class="add-service-btn" id="addServiceBtn">
+                        + 新增服務項目
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 卸甲、延甲管理區塊 -->
+            <div class="section">
+                <!-- 區塊標題 -->
+                <h2 class="section-title">卸甲與延甲管理</h2>
+                
+                <!-- 分隔線 -->
+                <div class="divider"></div>
+                
+                <!-- 卸甲服務管理 -->
+                <div class="subsection">
+                    <h3 class="subsection-title">卸甲服務</h3>
+                    <div class="removal-options" id="removalOptions">
+                        <!-- 卸甲選項將從 Google Sheets 動態載入 -->
+                    </div>
+                </div>
+                
+                <!-- 延甲服務管理 -->
+                <div class="subsection">
+                    <h3 class="subsection-title">延甲服務</h3>
+                    <div class="extension-options" id="extensionOptions">
+                        <!-- 延甲設定將從 Google Sheets 動態載入 -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 按鈕容器 -->
+            <div class="button-container">
+                <!-- 修改按鈕 (檢視模式下顯示) -->
+                <button class="edit-btn" id="editBtn">修改</button>
+                
+                <!-- 送出和取消按鈕 (編輯模式下顯示，初始隱藏) -->
+                <button class="submit-btn hidden" id="submitBtn">送出</button>
+                <button class="cancel-btn hidden" id="cancelBtn">放棄修改</button>
+            </div>
+        
+        </div>
+        
+    </div>
+
+    <!-- 確認模態框 -->
+    <div class="modal hidden" id="confirmModal">
+        <div class="modal-content">
+            <h3>確認儲存變更</h3>
+            <p>您確定要儲存這些變更嗎？</p>
+            <div class="modal-buttons">
+                <button class="cancel-btn" id="modalCancelBtn">取消</button>
+                <button class="confirm-btn" id="modalConfirmBtn">確認</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 載入必要的 JavaScript 模組 -->
+    <!-- 🔒 引入安全工具模組（必須優先載入） -->
+    <script src="security-utils.js" defer></script>
+    <!-- 🔐 引入加密工具模組 -->
+    <script src="crypto-utils.js" defer></script>
+    <!-- 🛡️ 引入 CSRF 保護模組 -->
+    <script src="csrf-protection.js" defer></script>
+    <!-- 🌐 引入 API 服務模組 -->
+    <script src="api-service.js" defer></script>
+    <!-- 📝 載入後台管理專用的 JavaScript -->
+    <script src="admin.js" defer></script>
+</body>
+</html> 

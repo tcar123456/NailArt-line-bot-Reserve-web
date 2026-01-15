@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <!-- 設定文件編碼為 UTF-8，確保中文字符正確顯示 -->
+    <meta charset="UTF-8">
+    <!-- 設定響應式設計的視窗參數，適合手機瀏覽，確保在不同設備上都有良好的顯示效果 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 網頁標題，顯示在瀏覽器標籤頁上 -->
+    <title>我的預約</title>
+    
+    <!-- 效能優化：預載入關鍵 CSS 資源，提前下載重要檔案以提升載入速度 -->
+    <!-- 只預載入 CSS 檔案，因為它們會立即用於頁面渲染 -->
+    <!-- JavaScript 檔案已使用 defer 屬性，會在 HTML 解析時並行下載，無需額外 preload -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="mybooking.css" as="style">
+    
+    <!-- 效能優化：DNS 預解析，提前解析外部域名以減少網路延遲 -->
+    <link rel="dns-prefetch" href="//static.line-scdn.net">
+    
+    <!-- 效能優化：預連接重要域名，提前建立與外部資源的連接 -->
+    <link rel="preconnect" href="https://static.line-scdn.net" crossorigin>
+    
+    <!-- 引入外部 CSS 樣式檔案，定義頁面的視覺外觀 -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mybooking.css">
+</head>
+<body>
+    <!-- 主要容器，包含所有頁面內容，提供統一的布局結構 -->
+    <div class="container">
+        <!-- 載入指示器：在頁面初始化時顯示，提供用戶反饋 -->
+        <div id="loadingIndicator" class="loading-indicator">
+            <div class="loading-spinner"></div>
+            <p>正在載入預約資訊...</p>
+        </div>
+        
+        <!-- 預約管理容器：主要內容區域，包含標題和預約資訊 -->
+        <div class="management-container">
+            <!-- 頁面標題：清楚標示當前頁面的功能 -->
+            <h1 class="management-title">我的預約</h1>
+            
+            <!-- 預約資訊顯示區域：以橫向長方形卡片形式顯示多筆預約 -->
+            <div id="bookingInfoContainer" class="booking-info-container" style="display: none;">
+                <!-- 動態生成的預約卡片將顯示在這裡 -->
+            </div>
+            
+            <!-- 無預約狀態：當用戶沒有預約記錄時顯示的友好提示 -->
+            <div id="noBookingContainer" class="no-booking-container" style="display: none;">
+                <div class="no-booking-icon">📅</div>
+                <div class="no-booking-text">目前沒有預約記錄</div>
+            </div>
+            
+            <!-- 載入狀態：在查詢預約資訊時顯示的載入提示 -->
+            <div id="loadingContainer" class="loading-container" style="display: none;">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">正在查詢預約資訊</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 使用 defer 屬性非阻塞載入 JavaScript，確保頁面內容優先載入 -->
+    <!-- 引入LIFF SDK：LINE 官方提供的 JavaScript 庫，用於與 LINE 平台整合 -->
+    <script defer charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <!-- 🔒 引入安全工具模組：提供資料遮罩和安全日誌功能（必須優先載入） -->
+    <script defer src="security-utils.js"></script>
+    <!-- 🔐 引入加密工具模組：提供 localStorage 資料加密功能 -->
+    <script defer src="crypto-utils.js"></script>
+    <!-- 🛡️ 引入 CSRF 保護模組：防止跨站請求偽造攻擊 -->
+    <script defer src="csrf-protection.js"></script>
+    <!-- 引入 LIFF 服務模組：統一管理 LIFF 初始化和用戶資料 -->
+    <script defer src="liff-service.js"></script>
+    <!-- 引入 API 服務：用於與後端 Google Apps Script 通訊 -->
+    <script defer src="api-service.js"></script>
+    <!-- 引入預約管理 JavaScript：處理頁面的互動邏輯和預約資訊顯示 -->
+    <script defer src="mybooking.js"></script>
+</body>
+</html> 

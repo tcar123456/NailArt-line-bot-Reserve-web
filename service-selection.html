@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <!-- 設定文件編碼為 UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- 設定響應式設計的視窗參數，適合手機瀏覽 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 網頁標題 -->
+    <title>服務選擇 - 美甲預約系統</title>
+    <!-- 引入外部 CSS 樣式檔案 -->
+    <link rel="stylesheet" href="service-selection.css">
+    <!-- 性能優化 -->
+    <!-- 只預載入 CSS 檔案，因為它們會立即用於頁面渲染 -->
+    <!-- JavaScript 檔案已使用 defer 屬性，會在 HTML 解析時並行下載，無需額外 preload -->
+    <link rel="preload" href="service-selection.css" as="style">
+    <link rel="dns-prefetch" href="//static.line-scdn.net">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- 引入LIFF SDK -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js" defer></script>
+</head>
+<body>
+    <!-- 主要容器，包含所有內容 -->
+    <div class="container">
+        <!-- 載入指示器 -->
+        <div id="initialLoadingContainer" class="initial-loading-container">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h3>正在驗證客戶資料...</h3>
+                <p class="loading-text">請稍候</p>
+            </div>
+        </div>
+
+        <!-- 服務選擇表單容器（初始隱藏） -->
+        <div class="form-container" id="mainContent" style="display: none;">
+            <!-- 內文標題 -->
+            <h2 class="form-title">服務選擇</h2>
+            
+            <form id="serviceForm">
+                <!-- 服務項目選擇區域 -->
+                <div class="section">
+                    <h3 class="section-title">服務項目</h3>
+                    <div class="service-options">
+                        <!-- 手｜單色 -->
+                        <div class="service-item" data-service="single-color">
+                            <span class="service-text">手｜單色</span>
+                            <span class="check-icon hidden">✓</span>
+                        </div>
+                        <!-- 手｜貓眼 -->
+                        <div class="service-item" data-service="cat-eye">
+                            <span class="service-text">手｜貓眼、鏡面、碎鑽特殊單色</span>
+                            <span class="check-icon hidden">✓</span>
+                        </div>
+                        <!-- 手｜不挑款 -->
+                        <div class="service-item" data-service="no-pick">
+                            <span class="service-text">手｜不挑款 or 其他 (麻煩備註幫我填寫)</span>
+                            <span class="check-icon hidden">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分隔線 -->
+                <div class="divider"></div>
+
+                <!-- 卸甲選項區域 -->
+                <div class="section">
+                    <h3 class="section-title">卸甲服務</h3>
+                    <div class="removal-options">
+                        <!-- 需要卸甲 -->
+                        <div class="removal-item" data-removal="need">
+                            <span class="removal-text">需要卸甲</span>
+                        </div>
+                        <!-- 不用卸甲 -->
+                        <div class="removal-item" data-removal="no-need">
+                            <span class="removal-text">不用卸甲</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分隔線 -->
+                <div class="divider"></div>
+
+                <!-- 數量選擇區域 -->
+                <div class="section">
+                    <div class="quantity-selector" id="quantitySelector">
+                        <span class="quantity-text" id="quantityText">延甲</span>
+                        <span class="check-icon hidden">✓</span>
+                    </div>
+                </div>
+
+                <!-- 分隔線 -->
+                <div class="divider"></div>
+
+                <!-- 其他備註區域 -->
+                <div class="section">
+                    <h3 class="section-title">其他備註</h3>
+                    <textarea 
+                        id="remarks" 
+                        name="remarks" 
+                        placeholder="請輸入其他需求或備註..."
+                        rows="4"
+                    ></textarea>
+                </div>
+
+                <!-- 按鈕區域 -->
+                <div class="button-container">
+                    <button type="button" class="back-btn" id="backBtn">返回</button>
+                    <button type="submit" class="submit-btn">確認服務</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 數量選擇模態框 -->
+        <div id="quantityModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>延甲</h3>
+                <div class="quantity-options">
+                    <div class="quantity-option" data-quantity="1-3">
+                        <span>一到三隻</span>
+                    </div>
+                    <div class="quantity-option" data-quantity="4-7">
+                        <span>四到七隻</span>
+                    </div>
+                    <div class="quantity-option" data-quantity="7+">
+                        <span>七隻以上</span>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button id="removeQuantity" class="remove-btn">移除</button>
+                    <button id="confirmQuantity" class="confirm-btn" disabled>確認</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服務確認模態框 -->
+        <div id="confirmModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>確認服務內容</h3>
+                <div id="serviceDetails" class="service-details"></div>
+                <div class="modal-buttons">
+                    <button id="confirmService" class="confirm-btn">確認</button>
+                    <button id="cancelService" class="cancel-btn">返回修改</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 正在預約模態框 -->
+        <div id="loadingModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>正在為您預約</h3>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+
+        <!-- 成功提示模態框 -->
+        <div id="successModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>預約成功！</h3>
+                <button id="closeSuccess" class="confirm-btn">關閉</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔒 引入安全工具模組（必須優先載入，供其他模組使用） -->
+    <script src="security-utils.js" defer></script>
+    <!-- 🔐 引入加密工具模組（localStorage 資料加密） -->
+    <script src="crypto-utils.js" defer></script>
+    <!-- 🛡️ 引入 CSRF 保護模組（防止跨站請求偽造） -->
+    <script src="csrf-protection.js" defer></script>
+    <!-- 引入 LIFF 服務模組 -->
+    <script src="liff-service.js" defer></script>
+    <!-- 引入 API 服務模組 -->
+    <script src="api-service.js" defer></script>
+    <!-- 引入服務選擇系統 JavaScript -->
+    <script src="service-selection.js" defer></script>
+</body>
+</html> 

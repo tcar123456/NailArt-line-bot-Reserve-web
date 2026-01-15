@@ -1,0 +1,312 @@
+/* 全域樣式重置，移除所有元素的預設邊距和內距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 讓邊框和內距包含在元素寬度內 */
+}
+
+/* 頁面主體樣式 */
+body {
+    /* 使用系統字體，確保在不同裝置上都有良好的顯示效果 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* 淡淡的杏色背景 */
+    background: #faf5ed;
+    min-height: 100vh; /* 最小高度為視窗高度 */
+    padding: 10px; /* 四周留白 */
+    line-height: 1.6; /* 改善文字可讀性 */
+}
+
+/* 主要容器樣式 */
+.container {
+    max-width: 400px; /* 最大寬度，適合手機螢幕 */
+    margin: 0 auto; /* 水平置中 */
+    background: white; /* 白色背景 */
+    border-radius: 20px; /* 圓角邊框 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    overflow: hidden; /* 隱藏超出容器的內容 */
+}
+
+/* 表單容器樣式 */
+.form-container {
+    padding: 15px 20px; /* 減少內部留白 */
+}
+
+/* 內文標題樣式 */
+.form-title {
+    font-size: 20px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    margin-bottom: 15px; /* 下方留白 */
+    text-align: center; /* 文字置中 */
+}
+
+/* 輸入群組樣式 */
+.input-group {
+    margin-bottom: 12px; /* 減少下方留白 */
+}
+
+/* 標籤樣式 */
+.input-group label {
+    display: block; /* 區塊顯示 */
+    margin-bottom: 4px; /* 減少下方留白 */
+    font-weight: 600; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    font-size: 16px; /* 字體大小 */
+}
+
+/* 必填欄位標示 */
+.required {
+    color: #d4a5a5; /* 典雅粉色 */
+    font-weight: bold;
+}
+
+/* 輸入框樣式 */
+.input-group input {
+    width: 100%; /* 全寬 */
+    padding: 12px; /* 減少內部留白 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    font-size: 16px; /* 字體大小 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+}
+
+/* 輸入框聚焦效果 */
+.input-group input:focus {
+    outline: none; /* 移除預設外框 */
+    border-color: #c8a8d8; /* 薰衣草色邊框 */
+    background: white; /* 白色背景 */
+    box-shadow: 0 0 0 3px rgba(200, 168, 216, 0.1); /* 薰衣草色陰影 */
+}
+
+/* 輸入框驗證錯誤狀態 */
+.input-group input.error {
+    border-color: #d4a5a5; /* 典雅粉色邊框 */
+    background: #fdf5f5; /* 淺粉色背景 */
+}
+
+/* 輸入框驗證錯誤狀態聚焦效果 */
+.input-group input.error:focus {
+    box-shadow: 0 0 0 3px rgba(212, 165, 165, 0.1); /* 典雅粉色陰影 */
+}
+
+/* 錯誤訊息樣式 */
+.error-message {
+    display: block; /* 區塊顯示 */
+    color: #d4a5a5; /* 典雅粉色文字 */
+    font-size: 14px; /* 字體大小 */
+    margin-top: 3px; /* 減少上方留白 */
+    min-height: 16px; /* 減少最小高度 */
+    font-weight: 500;
+}
+
+/* 輸入提示樣式 */
+.input-hint {
+    display: block; /* 區塊顯示 */
+    color: #8b7d8b; /* 典雅灰紫色文字 */
+    font-size: 12px; /* 字體大小 */
+    margin-top: 3px; /* 減少上方留白 */
+}
+
+/* 提交按鈕樣式 */
+.submit-btn {
+    width: 100%; /* 全寬 */
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 12px; /* 減少內部留白 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    margin-top: 8px; /* 減少上方留白 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 提交按鈕內容樣式 */
+.submit-btn .btn-text,
+.submit-btn .btn-loading {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+/* 載入狀態下的按鈕文字樣式 */
+.submit-btn .btn-loading {
+    gap: 8px; /* 載入圖示與文字間距 */
+}
+
+/* 提交按鈕懸停效果 */
+.submit-btn:hover {
+    background: #b89bb8; /* 更深的粉紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+    box-shadow: 0 4px 12px rgba(212, 181, 212, 0.3);
+}
+
+/* 提交按鈕聚焦效果 */
+.submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 181, 212, 0.3);
+}
+
+/* 提交按鈕禁用狀態 */
+.submit-btn:disabled {
+    background: #b8a8b8; /* 典雅灰紫色背景 */
+    cursor: not-allowed; /* 禁止點擊的指標 */
+    transform: none; /* 無變形 */
+    box-shadow: none;
+}
+
+/* 載入中的按鈕狀態 */
+.submit-btn.loading {
+    background: #c8a8d8; /* 薰衣草色背景，表示載入中 */
+    cursor: wait; /* 等待指標 */
+    pointer-events: none; /* 禁止所有滑鼠事件 */
+}
+
+.submit-btn.loading:hover {
+    background: #c8a8d8; /* 維持載入中的背景色 */
+    transform: none; /* 載入時不要有變形效果 */
+    box-shadow: none; /* 載入時不要有陰影效果 */
+}
+
+/* 載入動畫旋轉器樣式 */
+.loading-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* 旋轉動畫 */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 模態框遮罩層樣式 */
+.modal {
+    position: fixed; /* 固定定位 */
+    top: 0; /* 頂部對齊 */
+    left: 0; /* 左側對齊 */
+    width: 100%; /* 全寬 */
+    height: 100%; /* 全高 */
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    display: flex; /* 使用彈性布局 */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    z-index: 1000; /* 最高層級 */
+}
+
+/* 模態框內容容器 */
+.modal-content {
+    background: white; /* 白色背景 */
+    border-radius: 20px; /* 圓角邊框 */
+    padding: 30px; /* 內部留白 */
+    max-width: 300px; /* 最大寬度 */
+    width: 90%; /* 寬度 90% */
+    text-align: center; /* 文字置中 */
+    animation: modalSlideIn 0.3s ease; /* 滑入動畫 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* 模態框標題樣式 */
+.modal h2 {
+    margin-bottom: 15px; /* 下方留白 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    font-size: 18px;
+}
+
+/* 顧客資訊顯示區域 */
+#customerInfo {
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    padding: 15px; /* 內部留白 */
+    border-radius: 10px; /* 圓角邊框 */
+    margin: 15px 0; /* 上下留白 */
+    font-size: 14px; /* 字體大小 */
+    color: #8b7d8b; /* 典雅灰紫色文字 */
+    text-align: left; /* 文字左對齊 */
+}
+
+#customerInfo div {
+    margin-bottom: 8px;
+}
+
+#customerInfo div:last-child {
+    margin-bottom: 0;
+}
+
+/* 確認按鈕樣式 */
+.confirm-btn {
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 12px 24px; /* 內部留白 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    margin-top: 15px; /* 上方留白 */
+    font-size: 14px;
+}
+
+/* 確認按鈕懸停效果 */
+.confirm-btn:hover {
+    background: #b89bb8; /* 更深的粉紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 確認按鈕聚焦效果 */
+.confirm-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 181, 212, 0.3);
+}
+
+
+
+/* 隱藏元素 */
+.hidden {
+    display: none !important;
+}
+
+/* 模態框滑入動畫 */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 響應式設計 - 小螢幕優化 */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        border-radius: 15px;
+        margin: 5px;
+    }
+    
+    .form-container {
+        padding: 12px 15px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+        margin: 10px;
+    }
+} 

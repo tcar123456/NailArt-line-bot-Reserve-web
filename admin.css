@@ -1,0 +1,861 @@
+/* 匯入基礎樣式 - 與 service-selection.css 相同的基礎設定 */
+
+/* 全域樣式重置，移除所有元素的預設邊距和內距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 讓邊框和內距包含在元素寬度內 */
+}
+
+/* 頁面主體樣式 */
+body {
+    /* 使用系統字體，確保在不同裝置上都有良好的顯示效果 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* 淡淡的杏色背景 */
+    background: #f5efe6;
+    min-height: 100vh; /* 最小高度為視窗高度 */
+    padding: 10px; /* 四周留白 */
+    /* 防止手機瀏覽器縮放 */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* 確保觸控滾動順暢 */
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden; /* 防止水平滾動 */
+}
+
+/* 主要容器樣式 */
+.container {
+    max-width: 500px; /* 稍微寬一點，適合後台管理 */
+    margin: 0 auto; /* 水平置中 */
+    background: white; /* 白色背景 */
+    border-radius: 20px; /* 圓角邊框 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    overflow: hidden; /* 隱藏超出容器的內容 */
+    /* 確保容器內的滾動順暢 */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 表單容器樣式 */
+.form-container {
+    padding: 20px 25px; /* 內部留白 */
+}
+
+/* 內文標題樣式 */
+.form-title {
+    font-size: 22px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    margin-bottom: 25px; /* 下方留白 */
+    text-align: center; /* 文字置中 */
+}
+
+/* 區塊樣式 */
+.section {
+    margin-bottom: 25px; /* 下方留白 */
+}
+
+/* 區塊標題樣式 */
+.section-title {
+    font-size: 18px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    margin-bottom: 10px; /* 下方留白 */
+}
+
+/* 拖拽提示文字樣式 */
+.drag-hint {
+    font-size: 12px; /* 較小的字體 */
+    font-weight: 400; /* 正常粗細 */
+    color: #8b7d8b; /* 較淺的顏色 */
+    text-align: right; /* 靠右對齊 */
+    margin-bottom: 0; /* 緊貼下方橫線 */
+    opacity: 0; /* 初始隱藏 */
+    transition: opacity 0.3s ease; /* 淡入淡出效果 */
+}
+
+/* 編輯模式下顯示提示 */
+.drag-hint.show {
+    opacity: 1; /* 顯示 */
+}
+
+/* 分隔線樣式 */
+.divider {
+    height: 1px; /* 高度 */
+    background: #f0e6f0; /* 淺薰衣草色背景 */
+    margin: 3px 0; /* 上下留白 */
+    opacity: 0.6; /* 透明度 */
+}
+
+/* 服務項目選項容器 */
+.service-options {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 12px; /* 項目間距 */
+}
+
+/* 子區塊樣式 */
+.subsection {
+    margin-top: 20px; /* 上方留白 */
+    margin-bottom: 20px; /* 下方留白 */
+}
+
+/* 子區塊標題樣式 */
+.subsection-title {
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #8b7d8b; /* 較淺的紫灰色文字 */
+    margin-bottom: 12px; /* 下方留白 */
+}
+
+/* 卸甲選項容器 */
+.removal-options {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 12px; /* 項目間距 */
+}
+
+/* 卸甲選項項目樣式 - 與服務項目相同 */
+.removal-item {
+    position: relative; /* 相對定位，用於控制元素 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: space-between; /* 兩端對齊 */
+    min-height: 60px; /* 最小高度 */
+    gap: 10px; /* 子元素間距 */
+}
+
+/* 卸甲選項懸停效果 */
+.removal-item:hover {
+    background: #f0e6f0; /* 更深的薰衣草色背景 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 延甲選項容器 */
+.extension-options {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 12px; /* 項目間距 */
+}
+
+/* 延甲項目樣式 - 與服務項目相同 */
+.extension-item {
+    position: relative; /* 相對定位，用於控制元素 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: space-between; /* 兩端對齊 */
+    min-height: 60px; /* 最小高度 */
+    gap: 10px; /* 子元素間距 */
+}
+
+/* 延甲項目懸停效果 */
+.extension-item:hover {
+    background: #f0e6f0; /* 更深的薰衣草色背景 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 延甲數量選項區域 */
+.extension-quantity-section {
+    margin-top: 15px; /* 上方留白 */
+    padding: 15px; /* 內部留白 */
+    background: #f9f5f9; /* 非常淺的紫色背景 */
+    border-radius: 10px; /* 圓角邊框 */
+    border: 1px dashed #e0d0e0; /* 虛線邊框 */
+}
+
+/* 數量選項區域標題 */
+.quantity-section-title {
+    font-size: 14px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #8b7d8b; /* 較淺的紫灰色文字 */
+    margin-bottom: 10px; /* 下方留白 */
+}
+
+/* 數量選項列表容器 */
+.quantity-options-list {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 10px; /* 項目間距 */
+}
+
+/* 數量選項項目樣式 - 與服務項目相同但稍微不同背景 */
+.quantity-item {
+    position: relative; /* 相對定位，用於控制元素 */
+    background: white; /* 白色背景 */
+    border: 2px solid #e8dbe8; /* 較深的邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 12px; /* 內部留白 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: space-between; /* 兩端對齊 */
+    min-height: 50px; /* 最小高度 */
+    gap: 10px; /* 子元素間距 */
+}
+
+/* 數量選項懸停效果 */
+.quantity-item:hover {
+    background: #f5f0f5; /* 淺色背景 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 新增數量選項按鈕容器 */
+.add-quantity-container {
+    margin-top: 10px; /* 上方留白 */
+}
+
+/* 服務項目樣式 */
+.service-item {
+    position: relative; /* 相對定位，用於控制元素 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: space-between; /* 兩端對齊 */
+    min-height: 60px; /* 最小高度 */
+    gap: 10px; /* 子元素間距 */
+}
+
+/* 服務項目懸停效果 */
+.service-item:hover {
+    background: #f0e6f0; /* 更深的薰衣草色背景 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 刪除按鈕樣式 */
+.delete-btn {
+    width: 28px; /* 寬度 */
+    height: 28px; /* 高度 */
+    border-radius: 50%; /* 圓形 */
+    border: 2px solid #e6b3ba; /* 典雅粉色邊框 */
+    background: #f5f0f5; /* 淺粉色背景 */
+    color: #d4a5a5; /* 粉色文字 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: bold; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    flex-shrink: 0; /* 不縮小 */
+}
+
+/* 刪除按鈕懸停效果 */
+.delete-btn:hover {
+    background: #e6b3ba; /* 典雅粉色背景 */
+    color: white; /* 白色文字 */
+    border-color: #d4a5a5; /* 更深的粉色邊框 */
+    transform: scale(1.1); /* 放大 1.1 倍 */
+    box-shadow: 0 2px 8px rgba(212, 165, 165, 0.3); /* 粉色陰影 */
+}
+
+/* 刪除按鈕點擊效果 */
+.delete-btn:active {
+    transform: scale(0.95); /* 縮小到 0.95 倍 */
+}
+
+/* 服務項目文字樣式 */
+.service-text {
+    font-size: 16px; /* 字體大小 */
+    font-weight: 500; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    flex: 1; /* 占滿可用空間 */
+}
+
+/* 服務項目編輯輸入框樣式 */
+.service-edit-input {
+    flex: 1; /* 占滿可用空間 */
+    padding: 8px 12px; /* 內部留白 */
+    border: 2px solid #d4b5d4; /* 典雅粉紫色邊框 */
+    border-radius: 8px; /* 圓角邊框 */
+    font-size: 16px; /* 字體大小 - 保持16px以防止iOS縮放 */
+    font-family: inherit; /* 繼承字體 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    background: white; /* 白色背景 */
+    margin-right: 10px; /* 右側留白，減少以騰出空間 */
+    min-width: 0; /* 允許收縮 */
+    -webkit-appearance: none; /* 移除iOS默認樣式 */
+    -moz-appearance: none; /* 移除Firefox默認樣式 */
+    appearance: none; /* 移除標準瀏覽器默認樣式 */
+    -webkit-tap-highlight-color: transparent; /* 移除點擊高亮 */
+}
+
+/* 編輯輸入框聚焦效果 */
+.service-edit-input:focus {
+    outline: none; /* 移除預設外框 */
+    border-color: #b89bb8; /* 更深的粉紫色邊框 */
+    box-shadow: 0 0 0 3px rgba(180, 155, 184, 0.1); /* 粉紫色陰影 */
+    /* 防止聚焦時的縮放 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 編輯控制區域樣式 */
+.edit-controls {
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    gap: 6px; /* 元素間距，減少以節省空間 */
+    flex-shrink: 0; /* 不縮小 */
+    min-width: 70px; /* 最小寬度確保開關不被擠壓 */
+}
+
+/* 開關按鈕容器樣式 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px; /* 減少寬度以適應手機螢幕 */
+    height: 22px; /* 減少高度 */
+    flex-shrink: 0; /* 不縮小 */
+}
+
+/* 隱藏原生的 checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 開關滑塊樣式 */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b8a8b8; /* 未啟用時的灰色 */
+    transition: .3s;
+    border-radius: 24px; /* 圓角 */
+}
+
+/* 開關滑塊內的圓點 */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; /* 減少圓點大小 */
+    width: 16px; /* 減少圓點大小 */
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%; /* 圓形 */
+}
+
+/* 開關啟用時的樣式 */
+input:checked + .slider {
+    background-color: #d4b5d4; /* 典雅粉紫色 */
+}
+
+/* 開關啟用時圓點的位置 */
+input:checked + .slider:before {
+    transform: translateX(18px); /* 調整位移距離以配合新的開關大小 */
+}
+
+/* 開關標籤文字樣式 */
+.switch-label {
+    font-size: 12px; /* 字體大小，減少以節省空間 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    font-weight: 500; /* 字體粗細 */
+    white-space: nowrap; /* 防止文字換行 */
+}
+
+/* 新增服務項目容器樣式 */
+.add-service-container {
+    margin-top: 15px; /* 上方留白 */
+}
+
+/* 新增服務項目按鈕樣式 */
+.add-service-btn {
+    width: 100%; /* 全寬 */
+    background: #e8dbe8; /* 淺薰衣草色背景 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    border: 2px dashed #d4b5d4; /* 虛線邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 500; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+}
+
+/* 新增按鈕懸停效果 */
+.add-service-btn:hover {
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+    border-style: solid; /* 實線邊框 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 按鈕容器樣式 */
+.button-container {
+    display: flex; /* 使用彈性布局 */
+    gap: 12px; /* 按鈕間距 */
+    margin-top: 30px; /* 上方留白 */
+    margin-bottom: 10px; /* 底部留白，不貼齊底部 */
+    padding: 0 10px; /* 左右留白，不貼齊左右 */
+    justify-content: center; /* 按鈕置中 */
+}
+
+/* 編輯按鈕樣式 */
+.edit-btn {
+    min-width: 200px; /* 最小寬度，不要全寬 */
+    max-width: 300px; /* 最大寬度限制 */
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px 40px; /* 內部留白，左右加大 */
+    font-size: 18px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+}
+
+/* 編輯按鈕懸停效果 */
+.edit-btn:hover {
+    background: #b89bb8; /* 更深的粉紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 送出按鈕樣式 */
+.submit-btn {
+    flex: 1; /* 等分寬度 */
+    min-width: 120px; /* 最小寬度 */
+    max-width: 180px; /* 最大寬度 */
+    background: #a8c8a8; /* 淺綠色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px 30px; /* 內部留白，左右加大 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+}
+
+/* 送出按鈕懸停效果 */
+.submit-btn:hover {
+    background: #8fb88f; /* 更深的綠色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 取消按鈕樣式 */
+.cancel-btn {
+    flex: 1; /* 等分寬度 */
+    min-width: 120px; /* 最小寬度 */
+    max-width: 180px; /* 最大寬度 */
+    background: #b8a8b8; /* 典雅灰紫色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px 30px; /* 內部留白，左右加大 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+}
+
+/* 取消按鈕懸停效果 */
+.cancel-btn:hover {
+    background: #a094a0; /* 更深的灰紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 模態框遮罩層樣式 */
+.modal {
+    position: fixed; /* 固定定位 */
+    top: 0; /* 頂部對齊 */
+    left: 0; /* 左側對齊 */
+    width: 100%; /* 全寬 */
+    height: 100%; /* 全高 */
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    display: flex; /* 使用彈性布局 */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    z-index: 1000; /* 最高層級 */
+}
+
+/* 模態框內容容器 */
+.modal-content {
+    background: white; /* 白色背景 */
+    border-radius: 20px; /* 圓角邊框 */
+    padding: 30px; /* 內部留白 */
+    max-width: 350px; /* 最大寬度 */
+    width: 90%; /* 寬度 90% */
+    text-align: center; /* 文字置中 */
+    animation: modalSlideIn 0.3s ease; /* 滑入動畫 */
+}
+
+/* 模態框標題樣式 */
+.modal h3 {
+    margin-bottom: 15px; /* 下方留白 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    font-size: 20px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+}
+
+/* 模態框內文樣式 */
+.modal p {
+    margin-bottom: 25px; /* 下方留白 */
+    color: #8b7d8b; /* 典雅灰紫色文字 */
+    font-size: 16px; /* 字體大小 */
+    line-height: 1.5; /* 行高 */
+}
+
+/* 模態框按鈕容器 */
+.modal-buttons {
+    display: flex; /* 使用彈性布局 */
+    gap: 12px; /* 按鈕間距 */
+}
+
+/* 確認按鈕樣式 */
+.confirm-btn {
+    flex: 1; /* 等分寬度 */
+    padding: 15px; /* 內部留白 */
+    border: none; /* 移除邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+}
+
+/* 確認按鈕懸停效果 */
+.confirm-btn:hover {
+    background: #b89bb8; /* 更深的粉紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 隱藏元素的樣式 */
+.hidden {
+    display: none !important; /* 強制隱藏 */
+}
+
+/* 模態框滑入動畫 */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0; /* 起始透明度為 0 */
+        transform: scale(0.8); /* 起始縮放為 0.8 倍 */
+    }
+    to {
+        opacity: 1; /* 結束透明度為 1 */
+        transform: scale(1); /* 結束縮放為 1 倍 */
+    }
+}
+
+/* 拖拽排序相關樣式 */
+.service-item.dragging {
+    position: fixed; /* 固定定位，跟隨滑鼠/手指 */
+    opacity: 0.9; /* 拖拽時的透明度 */
+    z-index: 1000; /* 確保在最上層 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* 拖拽時的陰影 */
+    border-color: #d4b5d4; /* 拖拽時的邊框顏色 */
+    background: #f8f5f8; /* 拖拽時的背景色 */
+    pointer-events: none; /* 避免干擾其他元素的事件 */
+    transform: scale(1.02); /* 輕微放大 */
+    transition: none; /* 移除過渡效果以確保跟手 */
+    /* 拖拽時防止文字選擇 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* 拖拽時的原位置佔位符 */
+.service-item.drag-placeholder {
+    opacity: 0.3; /* 半透明顯示原位置 */
+    border: 2px dashed #d4b5d4; /* 虛線邊框 */
+    background: #f5f0f5; /* 淺色背景 */
+}
+
+/* 長按提示動畫 */
+.service-item.long-pressing {
+    transform: scale(0.98); /* 輕微縮小 */
+    transition: transform 0.1s ease; /* 快速過渡 */
+    /* 長按時防止文字選擇 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* 編輯模式下可拖拽的視覺提示 */
+.service-item.draggable {
+    cursor: grab; /* 顯示抓取手型 */
+    -webkit-user-select: none; /* 防止文字選擇 - WebKit */
+    -moz-user-select: none; /* 防止文字選擇 - Firefox */
+    -ms-user-select: none; /* 防止文字選擇 - IE/Edge */
+    user-select: none; /* 防止文字選擇 - 標準 */
+    -webkit-touch-callout: none; /* 防止iOS長按彈出選單 */
+    -webkit-tap-highlight-color: transparent; /* 移除點擊高亮 */
+}
+
+/* 恢復互動元素的功能 */
+.service-item.draggable .delete-btn,
+.service-item.draggable .switch {
+    pointer-events: auto; /* 確保可以點擊 */
+}
+
+/* 可拖拽狀態下的輸入框特殊處理 */
+.service-item.draggable .service-edit-input {
+    pointer-events: auto; /* 確保可以點擊 */
+}
+
+/* 可拖拽狀態下，非聚焦的輸入框禁止選擇 */
+.service-item.draggable .service-edit-input:not(:focus) {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* 可拖拽狀態下，聚焦的輸入框允許選擇 */
+.service-item.draggable .service-edit-input:focus {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+}
+
+.service-item.draggable:active {
+    cursor: grabbing; /* 拖拽時顯示抓緊手型 */
+}
+
+/* 拖拽和長按時的文字選擇控制已整合到上方的 .service-item.dragging 和 .service-item.long-pressing 中 */
+
+/* 確保互動元素在所有狀態下都能正常工作 */
+.delete-btn,
+.switch input,
+.slider {
+    pointer-events: auto !important; /* 強制確保可以點擊 */
+}
+
+/* 輸入框需要特殊處理 */
+.service-edit-input {
+    pointer-events: auto !important; /* 強制確保可以點擊 */
+}
+
+/* 輸入框選擇狀態控制 */
+.service-edit-input:not(:focus) {
+    -webkit-user-select: none !important; /* 非聚焦時禁止選擇 */
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+.service-edit-input:focus {
+    -webkit-user-select: text !important; /* 聚焦時允許選擇 */
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+}
+
+/* 停用的服務項目樣式 */
+.service-item.disabled {
+    opacity: 0.6; /* 降低透明度 */
+    background: #f5f5f5; /* 灰色背景 */
+}
+
+.service-item.disabled .service-text {
+    color: #999; /* 灰色文字 */
+    text-decoration: line-through; /* 刪除線 */
+}
+
+/* 停用的卸甲選項樣式 */
+.removal-item.disabled {
+    opacity: 0.6; /* 降低透明度 */
+    background: #f5f5f5; /* 灰色背景 */
+}
+
+.removal-item.disabled .service-text {
+    color: #999; /* 灰色文字 */
+    text-decoration: line-through; /* 刪除線 */
+}
+
+/* 停用的延甲選項樣式 */
+.extension-item.disabled {
+    opacity: 0.6; /* 降低透明度 */
+    background: #f5f5f5; /* 灰色背景 */
+}
+
+.extension-item.disabled .service-text {
+    color: #999; /* 灰色文字 */
+    text-decoration: line-through; /* 刪除線 */
+}
+
+/* 停用的數量選項樣式 */
+.quantity-item.disabled {
+    opacity: 0.6; /* 降低透明度 */
+    background: #f5f5f5; /* 灰色背景 */
+}
+
+.quantity-item.disabled .service-text {
+    color: #999; /* 灰色文字 */
+    text-decoration: line-through; /* 刪除線 */
+}
+
+/* 手機裝置優化樣式 */
+@media (max-width: 480px) {
+    /* 手機版頁面主體樣式 */
+    body {
+        padding: 5px; /* 減少四周留白 */
+    }
+    
+    /* 手機版主容器樣式 */
+    .container {
+        max-width: 100%; /* 全寬顯示 */
+        border-radius: 15px; /* 較小的圓角 */
+    }
+    
+    /* 手機版表單容器樣式 */
+    .form-container {
+        padding: 15px 15px; /* 減少左右內部留白 */
+    }
+    
+    /* 手機版服務項目樣式 */
+    .service-item {
+        padding: 12px; /* 減少內部留白 */
+        gap: 8px; /* 減少子元素間距 */
+        overflow: hidden; /* 防止縮放後的元素超出邊界 */
+    }
+    
+    /* 手機版刪除按鈕樣式 */
+    .delete-btn {
+        width: 24px; /* 減少寬度 */
+        height: 24px; /* 減少高度 */
+        font-size: 14px; /* 減少字體大小 */
+    }
+    
+    /* 手機版服務項目編輯輸入框 */
+    .service-edit-input {
+        font-size: 16px; /* 保持16px防止iOS自動縮放 */
+        padding: 6px 10px; /* 減少內部留白 */
+        margin-right: -2px; /* 負值讓輸入框向右擴展，靠近開關 */
+        transform: scale(0.875); /* 使用縮放來達到視覺上較小的效果 */
+        transform-origin: left center; /* 從左側開始縮放 */
+    }
+    
+    /* 手機版編輯控制區域 */
+    .edit-controls {
+        gap: 4px; /* 進一步減少間距 */
+        min-width: 65px; /* 減少最小寬度 */
+        margin-left: -18px; /* 增加補償值以配合輸入框的右擴展 */
+    }
+    
+    /* 手機版開關按鈕 */
+    .switch {
+        width: 36px; /* 進一步減少寬度 */
+        height: 20px; /* 進一步減少高度 */
+    }
+    
+    /* 手機版開關滑塊內的圓點 */
+    .slider:before {
+        height: 14px; /* 進一步減少圓點大小 */
+        width: 14px; /* 進一步減少圓點大小 */
+        left: 3px;
+        bottom: 3px;
+    }
+    
+    /* 手機版開關啟用時圓點的位置 */
+    input:checked + .slider:before {
+        transform: translateX(16px); /* 調整位移距離 */
+    }
+    
+    /* 手機版開關標籤文字 */
+    .switch-label {
+        font-size: 11px; /* 進一步減少字體大小 */
+    }
+    
+    /* 手機版服務項目文字 */
+    .service-text {
+        font-size: 14px; /* 減少字體大小 */
+    }
+    
+    /* 手機版子區塊樣式 */
+    .subsection {
+        margin-top: 15px; /* 減少上方留白 */
+        margin-bottom: 15px; /* 減少下方留白 */
+    }
+    
+    /* 手機版子區塊標題 */
+    .subsection-title {
+        font-size: 15px; /* 手機版字體大小 */
+    }
+    
+    /* 手機版卸甲、延甲、數量選項項目 */
+    .removal-item,
+    .extension-item,
+    .quantity-item {
+        padding: 12px; /* 減少內部留白 */
+        gap: 8px; /* 減少子元素間距 */
+    }
+    
+    /* 手機版延甲數量選項區域 */
+    .extension-quantity-section {
+        padding: 12px; /* 減少內部留白 */
+    }
+    
+    /* 手機版數量選項區域標題 */
+    .quantity-section-title {
+        font-size: 13px; /* 手機版字體大小 */
+    }
+    
+    /* 手機版拖拽提示 */
+    .drag-hint {
+        font-size: 11px; /* 手機版更小的字體 */
+        margin-bottom: 0; /* 緊貼下方橫線 */
+    }
+    
+    /* 手機版模態框內容樣式 */
+    .modal-content {
+        padding: 25px; /* 減少內部留白 */
+        max-width: 300px; /* 較小的最大寬度 */
+    }
+    
+    /* 手機版按鈕容器樣式 */
+    .button-container {
+        flex-direction: column; /* 垂直排列 */
+        gap: 10px; /* 減少間距 */
+        padding: 0 5px; /* 手機版左右留白減少 */
+        margin-bottom: 5px; /* 手機版底部留白減少 */
+    }
+    
+    /* 手機版編輯按鈕 */
+    .edit-btn {
+        min-width: 150px; /* 手機版最小寬度 */
+        max-width: 250px; /* 手機版最大寬度 */
+        padding: 12px 30px; /* 手機版內部留白 */
+        font-size: 16px; /* 手機版字體大小 */
+    }
+    
+    /* 手機版送出和取消按鈕 */
+    .submit-btn,
+    .cancel-btn {
+        min-width: 100px; /* 手機版最小寬度 */
+        max-width: 140px; /* 手機版最大寬度 */
+        padding: 12px 20px; /* 手機版內部留白 */
+        font-size: 14px; /* 手機版字體大小 */
+    }
+    
+    /* 手機版編輯模式按鈕容器 */
+    .button-container.edit-mode {
+        flex-direction: row; /* 水平排列 */
+        gap: 8px; /* 手機版編輯模式下的較小間距 */
+    }
+} 

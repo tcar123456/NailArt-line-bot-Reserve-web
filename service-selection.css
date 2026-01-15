@@ -1,0 +1,530 @@
+/* 全域樣式重置，移除所有元素的預設邊距和內距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 讓邊框和內距包含在元素寬度內 */
+}
+
+/* 初始載入指示器容器 */
+.initial-loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 40px 20px;
+}
+
+/* 載入內容 */
+.loading-content {
+    text-align: center;
+}
+
+/* 載入內容標題 */
+.loading-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #6b5b73;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+/* 載入內容文字 */
+.loading-content .loading-text {
+    font-size: 14px;
+    color: #8a7a8a;
+    margin: 0;
+}
+
+/* 頁面主體樣式 */
+body {
+    /* 使用系統字體，確保在不同裝置上都有良好的顯示效果 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* 淡淡的杏色背景 */
+    background: #f5efe6;
+    min-height: 100vh; /* 最小高度為視窗高度 */
+    padding: 10px; /* 四周留白 */
+}
+
+/* 主要容器樣式 */
+.container {
+    max-width: 400px; /* 最大寬度，適合手機螢幕 */
+    margin: 0 auto; /* 水平置中 */
+    background: white; /* 白色背景 */
+    border-radius: 20px; /* 圓角邊框 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    overflow: hidden; /* 隱藏超出容器的內容 */
+}
+
+/* 表單容器樣式 */
+.form-container {
+    padding: 15px 20px; /* 內部留白 */
+}
+
+/* 內文標題樣式 */
+.form-title {
+    font-size: 20px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    margin-bottom: 20px; /* 下方留白 */
+    text-align: center; /* 文字置中 */
+}
+
+/* 區塊樣式 */
+.section {
+    margin-bottom: 20px; /* 下方留白 */
+}
+
+/* 區塊標題樣式 */
+.section-title {
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    margin-bottom: 12px; /* 下方留白 */
+}
+
+/* 分隔線樣式 */
+.divider {
+    height: 1px; /* 高度 */
+    background: #f0e6f0; /* 淺薰衣草色背景 */
+    margin: 20px 0; /* 上下留白 */
+    opacity: 0.6; /* 透明度 */
+}
+
+/* 服務項目選項容器 */
+.service-options {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 10px; /* 項目間距 */
+}
+
+/* 服務項目樣式 */
+.service-item {
+    position: relative; /* 相對定位，用於打勾圖示 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: flex-start; /* 靠左對齊 */
+}
+
+/* 服務項目懸停效果 */
+.service-item:hover {
+    background: #f0e6f0; /* 更深的薰衣草色背景 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 選中的服務項目樣式 */
+.service-item.selected {
+    border-color: #d4b5d4; /* 典雅粉紫色邊框 */
+    background: #f5f0f5; /* 淺粉紫色背景 */
+}
+
+/* 服務項目文字樣式 */
+.service-text {
+    font-size: 16px; /* 字體大小 */
+    font-weight: 500; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+}
+
+/* 打勾圖示樣式 */
+.check-icon {
+    position: absolute; /* 絕對定位 */
+    top: 8px; /* 距離頂部 */
+    right: 12px; /* 距離右側 */
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+    border-radius: 50%; /* 圓形 */
+    width: 20px; /* 寬度 */
+    height: 20px; /* 高度 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    font-size: 12px; /* 字體大小 */
+    font-weight: bold; /* 字體粗細 */
+}
+
+/* 卸甲選項容器 */
+.removal-options {
+    display: flex; /* 使用彈性布局 */
+    gap: 10px; /* 項目間距 */
+}
+
+/* 卸甲選項樣式 */
+.removal-item {
+    flex: 1; /* 等分寬度 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    text-align: center; /* 文字置中 */
+}
+
+/* 卸甲選項懸停效果 */
+.removal-item:hover {
+    background: #f0e6f0; /* 更深的薰衣草色背景 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 選中的卸甲選項樣式 */
+.removal-item.selected {
+    border-color: #c8a8d8; /* 薰衣草色邊框 */
+    background: #f5f0f5; /* 淺薰衣草色背景 */
+}
+
+/* 卸甲選項文字樣式 */
+.removal-text {
+    font-size: 16px; /* 字體大小 */
+    font-weight: 500; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+}
+
+/* 數量選擇器樣式 */
+.quantity-selector {
+    position: relative; /* 相對定位，用於打勾圖示 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 12px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    display: flex; /* 使用彈性布局 */
+    justify-content: space-between; /* 兩端對齊 */
+    align-items: center; /* 垂直置中 */
+}
+
+/* 數量選擇器懸停效果 */
+.quantity-selector:hover {
+    background: #f0e6f0; /* 更深的薰衣草色背景 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 選中的數量選擇器樣式 */
+.quantity-selector.selected {
+    border-color: #d4b5d4; /* 典雅粉紫色邊框 */
+    background: #f5f0f5; /* 淺粉紫色背景 */
+}
+
+/* 數量選擇器中的打勾圖示樣式 */
+.quantity-selector .check-icon {
+    position: absolute; /* 絕對定位 */
+    top: 8px; /* 距離頂部 */
+    right: 12px; /* 距離右側 */
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+    border-radius: 50%; /* 圓形 */
+    width: 20px; /* 寬度 */
+    height: 20px; /* 高度 */
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    font-size: 12px; /* 字體大小 */
+    font-weight: bold; /* 字體粗細 */
+}
+
+/* 數量文字樣式 */
+.quantity-text {
+    font-size: 16px; /* 字體大小 */
+    font-weight: 500; /* 字體粗細 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+}
+
+
+
+/* 備註文字方塊樣式 */
+textarea {
+    width: 100%; /* 全寬 */
+    padding: 12px; /* 內部留白 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    font-size: 16px; /* 字體大小 */
+    font-family: inherit; /* 繼承字體 */
+    resize: vertical; /* 只允許垂直調整大小 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+}
+
+/* 備註文字方塊聚焦效果 */
+textarea:focus {
+    outline: none; /* 移除預設外框 */
+    border-color: #c8a8d8; /* 薰衣草色邊框 */
+    background: white; /* 白色背景 */
+    box-shadow: 0 0 0 3px rgba(200, 168, 216, 0.1); /* 薰衣草色陰影 */
+}
+
+/* 按鈕容器樣式 */
+.button-container {
+    display: flex; /* 使用彈性布局 */
+    gap: 10px; /* 按鈕間距 */
+    margin-top: 20px; /* 上方留白 */
+}
+
+/* 返回按鈕樣式 */
+.back-btn {
+    flex: 1; /* 等分寬度 */
+    background: #b8a8b8; /* 典雅灰紫色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+}
+
+/* 返回按鈕懸停效果 */
+.back-btn:hover {
+    background: #a094a0; /* 更深的灰紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 提交按鈕樣式 */
+.submit-btn {
+    flex: 1; /* 等分寬度 */
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 移除邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 15px; /* 內部留白 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+}
+
+/* 提交按鈕懸停效果 */
+.submit-btn:hover {
+    background: #b89bb8; /* 更深的粉紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 模態框遮罩層樣式 */
+.modal {
+    position: fixed; /* 固定定位 */
+    top: 0; /* 頂部對齊 */
+    left: 0; /* 左側對齊 */
+    width: 100%; /* 全寬 */
+    height: 100%; /* 全高 */
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    display: flex; /* 使用彈性布局 */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    z-index: 1000; /* 最高層級 */
+}
+
+/* 模態框內容容器 */
+.modal-content {
+    background: white; /* 白色背景 */
+    border-radius: 20px; /* 圓角邊框 */
+    padding: 30px; /* 內部留白 */
+    max-width: 320px; /* 最大寬度 */
+    width: 90%; /* 寬度 90% */
+    text-align: center; /* 文字置中 */
+    animation: modalSlideIn 0.3s ease; /* 滑入動畫 */
+}
+
+/* 模態框標題樣式 */
+.modal h3 {
+    margin-bottom: 20px; /* 下方留白 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+    font-size: 18px; /* 字體大小 */
+}
+
+/* 數量選項容器 */
+.quantity-options {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 10px; /* 項目間距 */
+    margin-bottom: 20px; /* 下方留白 */
+}
+
+/* 數量選項樣式 */
+.quantity-option {
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    border: 2px solid #f0e6f0; /* 淺薰衣草色邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 12px; /* 內部留白 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    color: #6b5b73; /* 典雅紫灰色文字 */
+}
+
+/* 數量選項懸停效果 */
+.quantity-option:hover {
+    background: #f0e6f0; /* 更深的薰衣草色背景 */
+}
+
+/* 選中的數量選項樣式 */
+.quantity-option.selected {
+    border-color: #d4b5d4; /* 典雅粉紫色邊框 */
+    background: #f5f0f5; /* 淺粉紫色背景 */
+}
+
+/* 服務詳細資訊樣式 */
+.service-details {
+    background: #faf8fb; /* 淺薰衣草色背景 */
+    padding: 15px; /* 內部留白 */
+    border-radius: 10px; /* 圓角邊框 */
+    margin: 15px 0; /* 上下留白 */
+    font-size: 14px; /* 字體大小 */
+    color: #8b7d8b; /* 典雅灰紫色文字 */
+    text-align: left; /* 文字左對齊 */
+    line-height: 1.5; /* 行高 */
+}
+
+/* 模態框按鈕容器 */
+.modal-buttons {
+    display: flex; /* 使用彈性布局 */
+    gap: 10px; /* 按鈕間距 */
+    margin-top: 20px; /* 上方留白 */
+}
+
+/* 按鈕基礎樣式 */
+.confirm-btn, .cancel-btn, .remove-btn {
+    flex: 1; /* 等分寬度 */
+    padding: 12px; /* 內部留白 */
+    border: none; /* 移除邊框 */
+    border-radius: 10px; /* 圓角邊框 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    cursor: pointer; /* 滑鼠指標變為手型 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    color: white; /* 白色文字 */
+}
+
+/* 確認按鈕樣式 */
+.confirm-btn {
+    background: #d4b5d4; /* 典雅粉紫色背景 */
+}
+
+/* 確認按鈕懸停效果 */
+.confirm-btn:hover:not(:disabled) {
+    background: #b89bb8; /* 更深的粉紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 確認按鈕禁用狀態 */
+.confirm-btn:disabled {
+    background: #b8a8b8; /* 典雅灰紫色背景 */
+    cursor: not-allowed; /* 禁止點擊的指標 */
+}
+
+/* 移除按鈕樣式 */
+.remove-btn {
+    background: #e6b3ba; /* 典雅粉色背景 */
+}
+
+/* 移除按鈕懸停效果 */
+.remove-btn:hover {
+    background: #d4a5a5; /* 更深的粉色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 取消按鈕樣式 */
+.cancel-btn {
+    background: #b8a8b8; /* 典雅灰紫色背景 */
+}
+
+/* 取消按鈕懸停效果 */
+.cancel-btn:hover {
+    background: #a094a0; /* 更深的灰紫色 */
+    transform: translateY(-2px); /* 向上移動 2px */
+}
+
+/* 隱藏元素的樣式 */
+.hidden {
+    display: none !important; /* 強制隱藏 */
+}
+
+/* 模態框滑入動畫 */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0; /* 起始透明度為 0 */
+        transform: scale(0.8); /* 起始縮放為 0.8 倍 */
+    }
+    to {
+        opacity: 1; /* 結束透明度為 1 */
+        transform: scale(1); /* 結束縮放為 1 倍 */
+    }
+}
+
+/* 手機裝置優化樣式 */
+@media (max-width: 480px) {
+    /* 手機版頁面主體樣式 */
+    body {
+        padding: 5px; /* 減少四周留白 */
+    }
+    
+    /* 手機版主容器樣式 */
+    .container {
+        max-width: 100%; /* 全寬顯示 */
+        border-radius: 15px; /* 較小的圓角 */
+    }
+    
+    /* 手機版表單容器樣式 */
+    .form-container {
+        padding: 10px 15px; /* 減少內部留白 */
+    }
+    
+    /* 手機版模態框內容樣式 */
+    .modal-content {
+        padding: 20px; /* 減少內部留白 */
+        max-width: 280px; /* 較小的最大寬度 */
+    }
+}
+
+/* 載入動畫樣式 */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* 載入動畫旋轉效果 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 載入模態框特殊樣式 */
+#loadingModal .modal-content {
+    pointer-events: none; /* 禁止點擊 */
+}
+
+#loadingModal .modal-content p {
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* 成功模態框特殊樣式 */
+#successModal h3 {
+    color: #000000; /* 黑色標題 */
+    font-size: 20px; /* 較大字體 */
+}
+
+#successModal .confirm-btn {
+    font-size: 16px; /* 字體大小16px */
+    padding: 15px 30px; /* 增加內部留白讓按鈕更大 */
+    min-width: 120px; /* 最小寬度 */
+}
+
+/* 成功模態框背景不可點擊 */
+#successModal {
+    pointer-events: auto; /* 允許模態框本身接收點擊事件 */
+}
+
+#successModal .modal-content {
+    pointer-events: auto; /* 確保模態框內容可以點擊 */
+} 

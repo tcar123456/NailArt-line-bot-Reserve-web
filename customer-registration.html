@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <!-- 設定文件編碼為 UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- 設定響應式設計的視窗參數，適合手機瀏覽 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 網頁標題 -->
+    <title>顧客建檔系統</title>
+    <!-- 引入外部 CSS 樣式檔案 -->
+    <link rel="stylesheet" href="customer-registration.css">
+    <!-- 引入LIFF SDK -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+    <!-- 主要容器，包含所有內容 -->
+    <div class="container">
+        <!-- 建檔表單容器 -->
+        <main class="form-container">
+            <!-- 內文標題 -->
+            <h1 class="form-title">基本資料</h1>
+            
+            <form id="customerForm" novalidate>
+                <!-- 姓名輸入區域 -->
+                <div class="input-group">
+                    <label for="customerName">姓名 <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="customerName" 
+                        name="customerName" 
+                        placeholder="請輸入您的姓名"
+                        required
+                        autocomplete="name"
+                        aria-describedby="nameError"
+                    >
+                    <span class="error-message" id="nameError" role="alert"></span>
+                </div>
+
+                <!-- 手機號碼輸入區域 -->
+                <div class="input-group">
+                    <label for="customerPhone">手機號碼 <span class="required">*</span></label>
+                    <input 
+                        type="tel" 
+                        id="customerPhone" 
+                        name="customerPhone" 
+                        placeholder="0912345678"
+                        pattern="09[0-9]{8}"
+                        maxlength="10"
+                        required
+                        autocomplete="tel"
+                        aria-describedby="phoneError phoneHint"
+                    >
+                    <span class="error-message" id="phoneError" role="alert"></span>
+                    <small class="input-hint" id="phoneHint">請輸入09開頭的10位數手機號碼
+                        <br>
+                        手機號碼只用於找不到人時的聯絡使用，平時不會撥打
+                    </small>
+                </div>
+
+                <!-- 提交按鈕 -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">建立檔案</span>
+                    <span class="btn-loading hidden">
+                        <span class="loading-spinner"></span>
+                        建立中...
+                    </span>
+                </button>
+            </form>
+        </main>
+
+        <!-- 成功建檔的模態框 -->
+        <div id="successModal" class="modal hidden" role="dialog" aria-labelledby="successTitle" aria-modal="true">
+            <div class="modal-content">
+                <h2 id="successTitle">✅ 建檔成功</h2>
+                <div id="customerInfo" aria-live="polite"></div>
+                <button id="closeSuccessBtn" class="confirm-btn">關閉</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔒 引入安全工具模組（必須優先載入，供其他模組使用） -->
+    <script defer src="security-utils.js"></script>
+    <!-- 🔐 引入加密工具模組（localStorage 資料加密） -->
+    <script defer src="crypto-utils.js"></script>
+    <!-- 🛡️ 引入 CSRF 保護模組（防止跨站請求偽造） -->
+    <script defer src="csrf-protection.js"></script>
+    <!-- 引入 LIFF 服務模組 -->
+    <script defer src="liff-service.js"></script>
+    <!-- 引入 API 服務模組 -->
+    <script defer src="api-service.js"></script>
+    <!-- 引入顧客建檔系統 JavaScript -->
+    <script defer src="customer-registration.js"></script>
+</body>
+</html> 

@@ -1,0 +1,61 @@
+/* 預約管理專用樣式 */
+.management-container {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.management-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #6b5b73;
+    margin-bottom: 40px;
+}
+
+.management-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.management-btn {
+    background: #f5f0f5;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #6b5b73;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.management-btn:hover {
+    background: #e8dde8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.management-btn:active {
+    transform: translateY(0);
+}
+
+.my-reservations-btn {
+    background: #d4b5d4;
+    color: white;
+}
+
+.my-reservations-btn:hover {
+    background: #c8a8d8;
+}
+
+.undecided-btn {
+    background: #f5f0f5;
+    color: #6b5b73;
+}
+
+.undecided-btn:hover {
+    background: #e8dde8;
+} 

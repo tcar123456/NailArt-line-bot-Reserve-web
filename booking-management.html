@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <!-- 設定文件編碼為 UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- 設定響應式設計的視窗參數，適合手機瀏覽 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 網頁標題 -->
+    <title>預約查詢</title>
+    
+    <!-- 效能優化：預載入關鍵 CSS 資源 -->
+    <!-- 只預載入 CSS 檔案，因為它們會立即用於頁面渲染 -->
+    <!-- JavaScript 檔案已使用 defer 屬性，會在 HTML 解析時並行下載，無需額外 preload -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="booking-management.css" as="style">
+    
+    <!-- 效能優化：DNS 預解析 -->
+    <link rel="dns-prefetch" href="//static.line-scdn.net">
+    
+    <!-- 效能優化：預連接重要域名 -->
+    <link rel="preconnect" href="https://static.line-scdn.net" crossorigin>
+    
+    <!-- 引入外部 CSS 樣式檔案 -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="booking-management.css">
+</head>
+<body>
+    <!-- 主要容器，包含所有內容，初始時隱藏 -->
+    <div class="container" id="mainContainer" style="display: none;">
+        <!-- 預約管理容器 -->
+        <div class="management-container">
+            <!-- 標題 -->
+            <h1 class="management-title">預約查詢</h1>
+            
+            <!-- 按鈕區域 -->
+            <div class="management-buttons">
+                <button id="myReservationsBtn" class="management-btn my-reservations-btn">
+                    我的預約
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 使用 defer 屬性非阻塞載入 JavaScript -->
+    <!-- 引入LIFF SDK -->
+    <script defer charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <!-- 引入 LIFF 服務模組 -->
+    <script defer src="liff-service.js"></script>
+    <!-- 引入預約管理 JavaScript -->
+    <script defer src="booking-management.js"></script>
+</body>
+</html> 

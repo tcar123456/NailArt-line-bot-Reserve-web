@@ -1,0 +1,52 @@
+# ==================== 臨時檔案 ====================
+# Claude Code 臨時檔案
+tmpclaude-*
+
+# 系統暫存檔案
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==================== 備份檔案 ====================
+*.bak
+*.backup
+*備份*
+
+# ==================== 敏感資訊 ====================
+# 環境變數 / 密鑰
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# ==================== IDE / 編輯器 ====================
+.vscode/
+.idea/
+*.sublime-*
+
+# ==================== 作業系統 ====================
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==================== 日誌檔案 ====================
+*.log
+logs/
+
+# ==================== 其他 ====================
+# Node.js (如果有)
+node_modules/
+package-lock.json
+
+# 測試/開發用檔案
+test-*
+debug-*

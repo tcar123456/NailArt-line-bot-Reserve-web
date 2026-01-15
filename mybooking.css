@@ -1,0 +1,167 @@
+/* 
+ * 我的預約專用樣式
+ * 基於 booking-management.css 的設計風格，保持視覺一致性
+ * 包含預約資訊顯示、無預約狀態、載入狀態等專用樣式
+ */
+
+/* 預約管理容器 - 主要內容區域 */
+.management-container {
+    padding: 40px 20px; /* 上下左右內邊距，確保內容不會貼邊 */
+    text-align: center; /* 內容置中對齊 */
+}
+
+/* 頁面標題樣式 */
+.management-title {
+    font-size: 24px; /* 標題字體大小 */
+    font-weight: 600; /* 字體粗細，介於正常和粗體之間 */
+    color: #6b5b73; /* 主色調：深紫色 */
+    margin-bottom: 40px; /* 下方間距，與按鈕區域分離 */
+}
+
+
+/* 預約資訊顯示區域 - 容器用於排列多個預約卡片 */
+.booking-info-container {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列預約卡片 */
+    gap: 20px; /* 卡片之間的間距 - 明顯增加間距 */
+    max-width: 100%; /* 最大寬度不超過手機寬度 */
+    margin: 0 auto; /* 水平置中 */
+    padding: 0 10px; /* 左右內邊距，確保不會貼邊 */
+}
+
+/* 使用ID選擇器確保樣式優先權 */
+#bookingInfoContainer {
+    display: flex !important; /* 使用彈性布局 */
+    flex-direction: column !important; /* 垂直排列預約卡片 */
+    gap: 26px !important; /* 卡片之間的間距 - 強制套用 */
+    max-width: 100% !important; /* 最大寬度不超過手機寬度 */
+    margin: 0 auto !important; /* 水平置中 */
+    padding: 0 10px !important; /* 左右內邊距，確保不會貼邊 */
+}
+
+/* 預約卡片 - 橫向長方形設計 */
+.booking-card {
+    background: #f9f6f9; /* 淺紫色背景 */
+    border-radius: 15px; /* 圓角 */
+    padding: 20px; /* 內邊距 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    width: 100%; /* 佔滿容器寬度 */
+    max-width: 100%; /* 最大寬度限制 */
+    box-sizing: border-box; /* 包含內邊距和邊框在寬度計算內 */
+}
+
+/* 預約詳細資訊區域 */
+.booking-details {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 12px; /* 項目間距 */
+}
+
+/* 日期時間區域 - 使用網格布局並排顯示 */
+.datetime-section {
+    display: grid; /* 使用網格布局 */
+    grid-template-columns: 1fr 1fr; /* 兩列等寬 */
+    gap: 12px; /* 網格間距 */
+    align-items: center; /* 垂直置中對齊 */
+}
+
+/* 預約資訊項目 */
+.booking-detail-item {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列標籤和數值 */
+    gap: 4px; /* 標籤和數值之間的間距 */
+}
+
+/* 預約資訊標籤 */
+.booking-detail-label {
+    font-size: 12px; /* 字體大小 */
+    color: #8b7b93; /* 較淺的紫色 */
+    font-weight: 500; /* 字體粗細 */
+}
+
+/* 預約資訊數值 */
+.booking-detail-value {
+    font-size: 16px; /* 字體大小 */
+    color: #6b5b73; /* 深紫色 */
+    font-weight: 600; /* 字體粗細 */
+}
+
+/* 客戶姓名特殊樣式 */
+.customer-name-value {
+    font-size: 18px; /* 字體大小 */
+    color: #6b5b73; /* 深紫色 */
+    font-weight: 600; /* 字體粗細 */
+}
+
+/* 服務項目區域 - 跨越兩列，靠左對齊 */
+.service-section {
+    display: flex; /* 使用彈性布局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 8px; /* 項目間距 */
+    text-align: left; /* 靠左對齊 */
+}
+
+/* 服務項目標題 */
+.service-section-title {
+    font-size: 14px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    color: #6b5b73; /* 深紫色 */
+    margin-bottom: 4px; /* 下方間距 */
+}
+
+/* 服務項目內容 */
+.service-item {
+    display: flex; /* 使用彈性布局 */
+    align-items: center; /* 垂直置中對齊 */
+    gap: 8px; /* 標籤和數值之間的間距 */
+}
+
+/* 服務項目標籤 */
+.service-label {
+    font-size: 14px; /* 字體大小 */
+    color: #8b7b93; /* 較淺的紫色 */
+    font-weight: 500; /* 字體粗細 */
+    min-width: 40px; /* 最小寬度，確保對齊 */
+}
+
+/* 服務項目數值 */
+.service-value {
+    font-size: 14px; /* 字體大小 */
+    color: #6b5b73; /* 深紫色 */
+    font-weight: 500; /* 字體粗細 */
+    flex: 1; /* 佔滿剩餘空間 */
+}
+
+/* 無預約狀態容器 */
+.no-booking-container {
+    text-align: center; /* 內容置中 */
+    padding: 40px 20px; /* 內邊距 */
+}
+
+/* 無預約圖示 */
+.no-booking-icon {
+    font-size: 48px; /* 大圖示 */
+    color: #d4b5d4; /* 紫色圖示 */
+    margin-bottom: 20px; /* 下方間距 */
+}
+
+/* 無預約文字 */
+.no-booking-text {
+    font-size: 18px; /* 字體大小 */
+    color: #6b5b73; /* 文字顏色 */
+    margin-bottom: 30px; /* 下方間距 */
+}
+
+
+/* 載入狀態容器 */
+.loading-container {
+    text-align: center; /* 內容置中 */
+    padding: 40px 20px; /* 內邊距 */
+}
+
+/* 載入文字 */
+.loading-text {
+    font-size: 18px; /* 字體大小 */
+    color: #6b5b73; /* 文字顏色 */
+    margin-top: 20px; /* 上方間距 */
+} 
